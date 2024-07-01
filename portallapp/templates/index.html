@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +38,25 @@
         .sidebar a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
+        .logo-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.logo-container img {
+    width: 50px; /* Adjust the width of your logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Adjust margin as needed */
+    filter: contrast(70%);
+    filter: brightness(100%);
+}
+
+.text-container {
+    color: white; /* Text color */
+    font-size: 2rem; /* Text size */
+    font-weight: bold; /* Text weight */
+}
+
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -44,7 +64,13 @@
     <section class="hero-bg" data-rellax-speed="-3">
         <div class="bg-black bg-opacity-50 w-full h-full flex flex-col justify-between">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="text-2xl font-bold text-white">GrapesGenix</div>
+                <div class="logo-container">
+                    <img src="{% static 'image/logo.png' %}" alt="Logo">
+                    <div class="text-container">
+                        <div class="text-2xl font-bold text-white">GrapesGenix</div>
+                    </div>
+                </div>
+                
                 <div class="block lg:hidden">
                     <button id="nav-toggle" class="text-white focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +85,7 @@
                 </div>
             </nav>
             <div class="container mx-auto px-6 py-16 text-center flex-grow flex flex-col justify-center">
+                
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">Welcome to GrapesGenix</h1>
                 <p class="text-xl md:text-2xl mb-8 text-white">Advanced Technological Solutions in IT and ITES</p>
                 <!-- <a href="#services" class="bg-white text-[#B50794] py-2 px-4 rounded-full font-semibold hover:bg-[#B50794] hover:text-white transition">Our Services</a> -->

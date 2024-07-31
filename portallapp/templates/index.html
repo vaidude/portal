@@ -56,7 +56,74 @@
     font-size: 2rem; /* Text size */
     font-weight: bold; /* Text weight */
 }
+.join-now-btn {
+            background-color: #8c0b74c4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+.join-now-btn:hover {
+            background-color: #f408c1;
+        }
+         
+         .getstarted {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid #d5d5e7;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease-in;
+            z-index: 1;
+            text-align: center;
+            background-color: #d4cbcf;
+            line-height: 50px; 
+            color: white;
+            box-shadow: 1px 4px 4px rgba(182, 43, 217, 0.65);
+        }
 
+        .getstarted::before,
+        .getstarted::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 100%;
+            transform: skew(15deg);
+            transition: all 0.5s;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .getstarted::before {
+            left: -10px;
+            background: #240046;
+        }
+
+        .getstarted::after {
+            right: -10px;
+            background: #8248bc;
+        }
+
+        .getstarted:hover::before,
+        .getstarted:hover::after {
+            width: 58%;
+        }
+
+        .getstarted:hover span {
+            color: #e0aaff;
+            transition: 0.3s;
+        }
+
+        .getstarted span {
+            color: #020215;
+            font-size: 18px;
+            transition: all 0.3s ease-in;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -79,17 +146,22 @@
                     </button>
                 </div>
                 <div class="hidden lg:flex space-x-6 text-white text-lg font-semibold">
-                    <a href="/register/" class="hover:text-gray-300">Register</a> 
-                    <a href="/login/" class="hover:text-gray-300">Login</a>
+                    <a href="/register/" class="join-now-btn">SIGN UP</a> 
+                    <!-- <a href="/login/" class="join-now-btn">Login</a> -->
+                    
                     <!-- <a href="#" class="hover:text-gray-300">Services</a>
                     <a href="#" class="hover:text-gray-300">About</a> -->
-                    <a href="#" class="hover:text-gray-300">Contact</a>
+                    <!-- <a href="#" class="hover:text-gray-300">Contact</a> -->
+                    <a href="/login/" class="join-now-btn">LOGIN</a>
                 </div>
             </nav>
             <div class="container mx-auto px-6 py-16 text-center flex-grow flex flex-col justify-center">
                 
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">Welcome to GrapesGenix</h1>
                 <p class="text-xl md:text-2xl mb-8 text-white">Advanced Technological Solutions in IT and ITES</p>
+                <div class="flex justify-center mt-4 lg:mt-0">
+                    <a href="/register/" class="getstarted"><span>Get Started</span></a>
+                </div>
                 <!-- <a href="#services" class="bg-white text-[#B50794] py-2 px-4 rounded-full font-semibold hover:bg-[#B50794] hover:text-white transition">Our Services</a> -->
             </div>
         </div>

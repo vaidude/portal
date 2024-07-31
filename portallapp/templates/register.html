@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Register</title>
+    <style>
+        .error-message {
+            color: #f40982; /* Grape color */
+            font-size: 14px;
+            margin-top: 5px;
+            background-color: #fdd; /* Light red background for emphasis */
+            padding: 8px; /* Padding for better readability */
+            border: 1px solid #e610bf; /* Grape color border */
+            border-radius: 4px; /* Rounded corners */
+        }
+        .bgm {
+            background: linear-gradient(145deg, #8A3EBF, #6F2DA8, #4B1C72);
+            box-shadow: 10px 10px 20px #4B1C72, -10px -10px 20px #8A3EBF;
+        }
+    </style>
+</head>
+<body class="bg-purple-100 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl">
+        <!-- Panel with sign-up form -->
+        <div class="w-full md:w-1/2 flex flex-col items-center p-6 md:p-10">
+            <form method="post" action="" class="w-full">
+                {% csrf_token %}
+                <h2 class="text-2xl font-bold text-purple-800 mb-4">Sign up</h2>
+                {% if error_message %}
+                    <p class="error-message">{{ error_message }}</p>
+                {% endif %}
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md">
+                        <i class="fas fa-user p-2 text-purple-600"></i>
+                        <input type="text" placeholder="Username" name="username" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md">
+                        <i class="fas fa-envelope p-2 text-purple-600"></i>
+                        <input type="text" placeholder="Email" name="email" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md">
+                        <i class="fas fa-lock p-2 text-purple-600"></i>
+                        <input type="password" placeholder="Password" name="password" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md">
+                        <i class="fas fa-lock p-2 text-purple-600"></i>
+                        <input type="password" placeholder="Confirm Password" name="confirm_password" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md">
+                    </div>
+                </div>
+                <input type="submit" value="Sign up" style="background-color: #ce03b6" class="w-full text-white py-2 rounded-md hover:bg-purple-700 cursor-pointer">
+                <p class="text-center mt-4 text-sm">Already have an account? <a href="{% url 'login' %}" class="text-purple-600 hover:text-purple-700">Sign in</a></p>
+            </form>
+        </div>
+
+        <!-- Panel with image -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center bg-purple-600 text-white p-6 md:p-10 bgm">
+            <h3 class="text-2xl font-bold mb-4">Join us today!</h3>
+            <p class="mb-4">Ready to elevate your journey? Enroll now!</p>
+            <img src="{% static 'image/image.png' %}" alt="Sign up" class="w-full max-w-xs bg-white p-4 rounded-lg">
+        </div>
+    </div>
+</body>
+</html>

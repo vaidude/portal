@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Login</title>
+    <style>
+        .error-message {
+            color: #f80909; /* Grape color */
+            font-size: 14px;
+            margin-top: 5px;
+            background-color: #fdd; /* Light red background for emphasis */
+            padding: 8px; /* Padding for better readability */
+            border: 1px solid #e61010; /* Grape color border */
+            border-radius: 4px; /* Rounded corners */
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+
+        .bgm{
+           
+            background: linear-gradient(145deg, #8A3EBF, #6F2DA8, #4B1C72);
+          
+            box-shadow: 10px 10px 20px #4B1C72, -10px -10px 20px #8A3EBF;
+        }
+        .input-field {
+        color: #000; /* Black text color */
+    }
+        
+    </style>
+</head>
+<body class="bg-purple-100 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl">
+        <!-- Panel with image -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center bg-white p-6 md:p-10">
+            <img src="{% static 'image/image.png' %}" alt="Sign up" class="w-full max-w-xl p-4 rounded-lg">
+        </div>
+
+        <!-- Panel with login form -->
+        <div class="w-full md:w-1/2 flex flex-col items-center p-6 md:p-10 bg-purple-600 text-white bgm">
+
+            <form method="post" action="" class="w-full " >
+                {% csrf_token %}
+                <h2 class="text-2xl font-bold mb-4">Sign in</h2>
+                {% if error_message %}
+                    <p class="error-message">{{ error_message }}</p>
+                {% endif %}
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md ">
+                        <i class="fas fa-user p-2 text-purple-600"></i>
+                        <input type="text" placeholder="Username" name="email" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md input-field">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="flex items-center bg-gray-100 rounded-md">
+                        <i class="fas fa-lock p-2 text-purple-600"></i>
+                        <input type="password" placeholder="Password" name="password" required class="bg-gray-100 w-full py-2 px-3 focus:outline-none rounded-md input-field">
+                    </div>
+                </div>
+                <input type="submit" value="Login" style="background-color: #ce03b6" class="w-full  text-white py-2 rounded-md hover:bg-purple-700 cursor-pointer">
+                <p class="text-center mt-4 text-sm">Don't have an account? <a href="{% url 'register' %}" class="text-purple-200 hover:text-blue-100">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorMessage = document.querySelector('.error-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.classList.add('fade-out');
+                }, 2000); // 5000 milliseconds = 5 seconds
+            }
+        });
+    </script>
+    
+</body>
+</html>
